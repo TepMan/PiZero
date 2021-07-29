@@ -1,22 +1,7 @@
 import time
-
 from display_control import display_clear, display_status
 
 display_clear()
-# value = int(input("Wert in Prozent: "))
-#
-# while True:
-#     display_status(value)
-#     value = int(input("Wert in Prozent (0 zum Beenden): "))
-#
-#     if value == 0:
-#         break
-#     else:
-#         display_status(value)
-
-#display_clear()
-
-
 control = True
 
 while control:
