@@ -7,3 +7,5 @@ Used hardware:
 - Pi Zero WH
 - BME688 breakout board from Pi3g
 - Waveshare OLED Display (monochrome, 128x32)
+
+![Hardware](https://github.com/TepMan/PiZero/blob/master/IMG_20210731_202917.jpg "Hardware")
