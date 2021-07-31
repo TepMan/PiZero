@@ -1,32 +1,29 @@
 import time
-
-from display_control import display_clear, display_status
+from bme68x_control import read_data
+from display_control import display_clear, display_blocks
 
 display_clear()
-# value = int(input("Wert in Prozent: "))
-#
-# while True:
-#     display_status(value)
-#     value = int(input("Wert in Prozent (0 zum Beenden): "))
-#
-#     if value == 0:
-#         break
-#     else:
-#         display_status(value)
 
-#display_clear()
+print("Air Qualitiy Measurement Tool v1.0")
+print("==================================")
+print(" ")
 
+try:
+    while True:
+        data = read_data()
 
-control = True
+        display_blocks(int(data["iaq-state"]))
 
-while control:
-    for i in range(100):
-        display_status(i)
-        time.sleep(0.5)
+        print("Timestamp   : " + data["timestamp"])
+        print("Air Quality : " + str(data["iaq"]))
+        print("Description : " + data["description"])
+        print("IAQ State   : " + data["iaq-state"].name)
+        print("Temperature : " + '{:.1f}°C'.format(data["temperature"]))
+        print("Humidity    : " + '{:.1f}%'.format(data["humidity"]))
+        print(" ")
 
+        time.sleep(5)
+
+except KeyboardInterrupt:
     display_clear()
-
-    char = input("Zum Beenden x drücken: ")
-
-    if char == 'x' or char == 'X':
-        control = False
+    print("Program interrupted by user!")
