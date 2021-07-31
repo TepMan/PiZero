@@ -16,52 +16,45 @@ SPI_PORT = 0
 SPI_DEVICE = 0
 
 # 128x32 display with hardware SPI:
-disp = SSD1305.SSD1305_128_32(rst=RST, dc=DC, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=8000000))
+display = SSD1305.SSD1305_128_32(rst=RST, dc=DC, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=8000000))
 
 # Initialize library.
-disp.begin()
+display.begin()
 
 # Create blank image for drawing.
 # Make sure to create image with mode '1' for 1-bit color.
-width = disp.width
-height = disp.height
-image = Image.new('1', (width, height))
-
-# Get drawing object to draw on image.
-draw = ImageDraw.Draw(image)
+width = display.width
+height = display.height
 
 
-def display_status(value):
+def display_blocks(block_count: int):
+    image = Image.new('1', (width, height))
+    # Get drawing object to draw on image.
+    draw = ImageDraw.Draw(image)
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
-    if value > 0:
+    if block_count > 0:
         draw.rectangle((0, 0, 11, height), outline=0, fill=1)
-    if value > 10:
+    if block_count > 1:
         draw.rectangle((13, 0, 24, height), outline=0, fill=1)
-    if value > 20:
+    if block_count > 2:
         draw.rectangle((26, 0, 37, height), outline=0, fill=1)
-    if value > 30:
+    if block_count > 3:
         draw.rectangle((39, 0, 50, height), outline=0, fill=1)
-    if value > 40:
+    if block_count > 4:
         draw.rectangle((52, 0, 63, height), outline=0, fill=1)
-    if value > 50:
+    if block_count > 5:
         draw.rectangle((65, 0, 76, height), outline=0, fill=1)
-    if value > 60:
+    if block_count > 6:
         draw.rectangle((78, 0, 89, height), outline=0, fill=1)
-    if value > 70:
-        draw.rectangle((91, 0, 102, height), outline=0, fill=1)
-    if value > 80:
-        draw.rectangle((104, 0, 115, height), outline=0, fill=1)
-    if value > 90:
-        draw.rectangle((117, 0, 128, height), outline=0, fill=1)
 
     # Display image.
-    disp.image(image)
-    disp.display()
+    display.image(image)
+    display.display()
     time.sleep(.1)
 
 
 def display_clear():
-    disp.clear()
-    disp.display()
+    display.clear()
+    display.display()
