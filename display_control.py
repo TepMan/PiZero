@@ -35,19 +35,19 @@ def display_blocks(block_count: int):
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
     if block_count > 0:
-        draw.rectangle((0, 0, 11, height), outline=0, fill=1)
+        draw.rectangle((0, 0, 16, height), outline=0, fill=1)
     if block_count > 1:
-        draw.rectangle((13, 0, 24, height), outline=0, fill=1)
+        draw.rectangle((18, 0, 34, height), outline=0, fill=1)
     if block_count > 2:
-        draw.rectangle((26, 0, 37, height), outline=0, fill=1)
+        draw.rectangle((36, 0, 52, height), outline=0, fill=1)
     if block_count > 3:
-        draw.rectangle((39, 0, 50, height), outline=0, fill=1)
+        draw.rectangle((54, 0, 70, height), outline=0, fill=1)
     if block_count > 4:
-        draw.rectangle((52, 0, 63, height), outline=0, fill=1)
+        draw.rectangle((72, 0, 88, height), outline=0, fill=1)
     if block_count > 5:
-        draw.rectangle((65, 0, 76, height), outline=0, fill=1)
+        draw.rectangle((90, 0, 106, height), outline=0, fill=1)
     if block_count > 6:
-        draw.rectangle((78, 0, 89, height), outline=0, fill=1)
+        draw.rectangle((108, 0, 124, height), outline=0, fill=1)
 
     # Display image.
     display.image(image)
