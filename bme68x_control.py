@@ -1,10 +1,10 @@
 from enum import IntEnum
 from bme68x import BME68X
-import bme68xConstants as cnst
-import bsecConstants as bsec
+import bme68xConstants as bmeConst
+import bsecConstants as bsecConst
 import time
 
-bme = BME68X(cnst.BME68X_I2C_ADDR_HIGH, bsec.BSEC_ENABLE)
+bme = BME68X(bmeConst.BME68X_I2C_ADDR_HIGH, bsecConst.BSEC_ENABLE)
 
 
 class IaqState(IntEnum):
@@ -30,7 +30,6 @@ def read_data():
                    'temperature': temp,
                    "humidity": hum,
                    "timestamp": timestamp,
-                   "iaq_description": get_iaq_description(iaq),
                    "description": description[0],
                    "iaq-state": description[1]}
 

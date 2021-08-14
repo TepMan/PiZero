@@ -1,6 +1,7 @@
 import time
 from bme68x_control import read_data
 from display_control import display_clear, display_blocks
+from mqtt_comm import send_data
 
 display_clear()
 
@@ -14,15 +15,17 @@ try:
 
         display_blocks(int(data["iaq-state"]))
 
-        print("Timestamp   : " + data["timestamp"])
-        print("Air Quality : " + str(data["iaq"]))
-        print("Description : " + data["description"])
-        print("IAQ State   : " + data["iaq-state"].name)
-        print("Temperature : " + '{:.1f}°C'.format(data["temperature"]))
-        print("Humidity    : " + '{:.1f}%'.format(data["humidity"]))
-        print(" ")
+        # print("Timestamp   : " + data["timestamp"])
+        # print("Air Quality : " + str(data["iaq"]))
+        # print("Description : " + data["description"])
+        # print("IAQ State   : " + data["iaq-state"].name)
+        # print("Temperature : " + '{:.1f}°C'.format(data["temperature"]))
+        # print("Humidity    : " + '{:.1f}%'.format(data["humidity"]))
+        # print(" ")
 
-        time.sleep(5)
+        send_data(data)
+
+        time.sleep(10)
 
 except KeyboardInterrupt:
     display_clear()
