@@ -16,7 +16,9 @@ print(" ")
 
 
 def send_data(data):
+    print("Data received:" + str(data))
     payload = json.dumps(data)
+    print("Payload: " + str(payload))
 
     client.publish(TOPIC, payload, qos=QOS)
-    client.loop()
+    # client.loop()

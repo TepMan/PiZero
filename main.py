@@ -1,5 +1,6 @@
 import time
-
+from mqtt_comm import send_data
+from Measurement import Measurement
 from lib.aq import AQ
 
 print("Air Qualitiy Measurement Tool v1.0")
@@ -12,7 +13,13 @@ try:
     while True:
         coValue = aq.get_eco2()
         tmpValue = aq.get_temp()
-        print("CO2-Wert ist " + str(coValue) + " Temp. ist " + str(tmpValue))
+
+        measurement = Measurement(tmpValue, coValue)
+
+        print("CO2-Wert ist " + str(coValue))
+        print("Temp. ist    " + str(tmpValue))
+        
+        send_data(measurement)
         time.sleep(15)
 
 except KeyboardInterrupt:
