@@ -18,7 +18,7 @@ try:
 
         print("CO2-Wert ist " + str(coValue))
         print("Temp. ist    " + str(tmpValue))
-        
+
         send_data(measurement)
         time.sleep(15)
 

@@ -1,3 +1,6 @@
+import json
+
+
 class Measurement(object):
     Temperature = 0
     Co2Value = 0
@@ -6,7 +9,7 @@ class Measurement(object):
     def __init__(self, temperature, co2value):
         self.Temperature = temperature
         self.Co2Value = co2value
-#
-# def make_student(name, age, major):
-#     student = Student(name, age, major)
-#     return student
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                          sort_keys=True, indent=4)
