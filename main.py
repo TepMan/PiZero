@@ -1,11 +1,12 @@
 import time
+import datetime
 from mqtt_comm import send_data
 from Measurement import Measurement
 from lib.aq import AQ
 
-print("Air Qualitiy Measurement Tool v1.0")
-print("==================================")
-print(" ")
+# print("Air Qualitiy Measurement Tool v1.0")
+# print("==================================")
+# print(" ")
 
 aq = AQ()
 
@@ -16,8 +17,7 @@ try:
 
         measurement = Measurement(tmpValue, coValue)
 
-        print("CO2-Wert ist " + str(coValue))
-        print("Temp. ist    " + str(tmpValue))
+        # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " - CO2-Wert: " + str(coValue) + " / Temp.: " + str(tmpValue))
 
         send_data(measurement)
         time.sleep(30)
