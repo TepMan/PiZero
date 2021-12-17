@@ -20,7 +20,7 @@ try:
         print("Temp. ist    " + str(tmpValue))
 
         send_data(measurement)
-        time.sleep(15)
+        time.sleep(30)
 
 except KeyboardInterrupt:
     print("Program interrupted by user!")

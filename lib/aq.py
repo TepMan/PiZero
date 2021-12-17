@@ -1,6 +1,6 @@
 import serial
-import threading
 import time
+
 
 class AQ:
     """A Class for the MonkMakes Air Quality Board for Raspberry Pi"""
@@ -10,7 +10,7 @@ class AQ:
     ser = None
 
     def __init__(self):
-         self.ser = serial.Serial("/dev/ttyS0", 9600)
+        self.ser = serial.Serial("/dev/ttyS0", 9600)
 
     def get_eco2(self):
         self.send("c")
@@ -38,10 +38,10 @@ class AQ:
         self.send("q")
 
     def send(self, message):
-        self.ser.write(bytes(message+"\n", 'utf-8'))
+        self.ser.write(bytes(message + "\n", 'utf-8'))
 
     def _wait_for_message(self):
-        time.sleep(0.1) # give attiny time to respond
+        time.sleep(0.1)  # give attiny time to respond
         incoming_message = str(self.ser.readline()[:-2].decode("utf-8"))  # remove LF, CR turn into string
         message_parts = incoming_message.split("=")
         if len(message_parts) == 2:
@@ -50,4 +50,3 @@ class AQ:
                 self.temp = float(value)
             elif code == "c":
                 self.eco2 = float(value)
-
