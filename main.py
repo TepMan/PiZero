@@ -17,7 +17,7 @@ try:
 
         measurement = Measurement(tmpValue, coValue)
 
-        # print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " - CO2-Wert: " + str(coValue) + " / Temp.: " + str(tmpValue))
+        #print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " - CO2-Wert: " + str(coValue) + " / Temp.: " + str(tmpValue))
 
         send_data(measurement)
         time.sleep(30)

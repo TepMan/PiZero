@@ -1,0 +1,16 @@
+[Unit]
+Description=Starten des AirQialitySensors bei Systemstart
+
+[Service]
+Type=simple
+ExecStart=/home/pi/airquality.sh
+User=pi
+# Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+#!/bin/sh
+
+cd /home/pi/PythonScripts && python3 main.py
